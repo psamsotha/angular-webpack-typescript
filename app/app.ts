@@ -4,6 +4,7 @@ import * as angular from 'angular';
  * Import libraries
  */
 import 'angular';
+import 'angular-resource';
 import '@uirouter/angularjs';
 
 
@@ -12,6 +13,11 @@ import '@uirouter/angularjs';
  */
 require.context('./assets/img', true, /^\.\//);
 
+/**
+ * Import application modules
+ */
+import { resourcesModule } from './resources';
+
 
 /**
  * Configure the app
@@ -19,4 +25,6 @@ require.context('./assets/img', true, /^\.\//);
 angular
   .module('app', [
     "ui.router",
-  ])
+
+    resourcesModule.name
+  ]);
