@@ -14,7 +14,7 @@ const wrapDependency = (resourceFactory) => [
 ];
 
 
-export const resourcesModule: ng.IModule = angular
+export const ResourcesModule: ng.IModule = angular
   .module('app.resources', [
     'ngResource'
   ])

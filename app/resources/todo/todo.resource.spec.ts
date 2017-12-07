@@ -30,13 +30,13 @@ describe('resources: TodoResource', () => {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should fetch todos from `/data/todos.json`', () => {
+  it('should fetch todos from `/data/todos/todos.json`', () => {
     const todoData = <ITodo[]>[
       { title: 'Do something' },
       { title: 'Do something else' }
     ];
 
-    $httpBackend.expectGET('/data/todos.json')
+    $httpBackend.expectGET('/data/todos/todos.json')
         .respond(todoData);
 
     const todos = TodoResource.query();
@@ -44,5 +44,18 @@ describe('resources: TodoResource', () => {
 
     $httpBackend.flush();
     expect(todos).toEqual(todoData);
+  });
+
+  it('should fetch a single todo from `/data/todos/:todoId.json', () => {
+    const todoData = <ITodo>{ id: 1, title: 'Do Something' };
+
+    $httpBackend.expectGET('/data/todos/1.json')
+        .respond(todoData);
+
+    const todo = TodoResource.get({ todoId: 1 });
+    // expect(todo).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(todo).toEqual(todoData);
   });
 });
