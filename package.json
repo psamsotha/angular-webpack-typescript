@@ -1,9 +1,9 @@
 {
-  "name": "angular-webpack",
+  "name": "angularjs-ts-starter",
   "version": "2.2.0",
   "description": "Skeleton project using Angular 1.6.6, typescript and webpack",
   "main": "app/index.js",
-  "repository": "https://github.com/deonclem/angular-webpack-typescript.git",
+  "repository": "https://github.com/deonclem/angularjs-ts-starter.git",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.6",
     "@uirouter/core": "^5.0.6",
@@ -50,7 +50,8 @@
     "webpack-dev-server": "^2.8.2"
   },
   "scripts": {
-    "test": "karma start",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
     "start": "npm install && npm run-script dev",
     "dev": "node node_modules/.bin/webpack-dev-server --env.dev --content-base app --host 0.0.0.0 --no-inline",
     "build": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp app/index.html dist/index.html",

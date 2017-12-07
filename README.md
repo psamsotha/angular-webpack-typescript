@@ -9,7 +9,8 @@ This repository contains a basic app running using Angular 1.6.6, Typescript 2.5
 * Run `npm build` to build a production distrib of your app
 * Run `npm run dev` to start a local dev server
 * Run `npm run dist` to build a production distrib of your app and serve it with a local server
-* Run `npm test` to run the karma unit tests
+* Run `npm test` to run the karma unit tests with watch
+* Run `test-single-run` to run the karma unit tests once
 
 ## Misc
 

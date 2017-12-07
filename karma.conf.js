@@ -29,7 +29,6 @@ module.exports = function karmaConfig(config) {
       // Run tests using PhantomJS
       'PhantomJS'
     ],
-    singleRun: true,
     webpack: webpackConfig,
     plugins: [
       require('karma-webpack'),
