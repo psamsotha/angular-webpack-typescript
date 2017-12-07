@@ -16,7 +16,9 @@ require.context('./assets/img', true, /^\.\//);
 /**
  * Import application modules
  */
-import { resourcesModule } from './resources';
+import { appConfig } from './app.config';
+import { ResourcesModule } from './resources';
+import { ViewsModule } from './views';
 
 
 /**
@@ -26,5 +28,7 @@ angular
   .module('app', [
     "ui.router",
 
-    resourcesModule.name
-  ]);
+    ResourcesModule.name,
+    ViewsModule.name
+  ])
+  .config(appConfig);
