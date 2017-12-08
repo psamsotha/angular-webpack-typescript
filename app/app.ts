@@ -1,11 +1,15 @@
+import './app.scss';
+
 import * as angular from 'angular';
+import * as ngRedux from 'ng-redux';
+import uiRouter from '@uirouter/angularjs';
 
 /**
  * Import libraries
  */
 import 'angular';
-import 'angular-resource';
 import '@uirouter/angularjs';
+import 'ng-redux';
 
 
 /**
@@ -17,8 +21,7 @@ require.context('./assets/img', true, /^\.\//);
  * Import application modules
  */
 import { appConfig } from './app.config';
-import { ResourcesModule } from './resources';
-import { ViewsModule } from './views';
+import { TodosModule } from './todos';
 
 
 /**
@@ -26,9 +29,9 @@ import { ViewsModule } from './views';
  */
 angular
   .module('app', [
-    "ui.router",
+    uiRouter,
 
-    ResourcesModule.name,
-    ViewsModule.name
+    'ngRedux',
+    TodosModule
   ])
   .config(appConfig);
