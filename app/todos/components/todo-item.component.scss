@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+
+.todo {
+  padding-top: $padding-sm;
+  padding-bottom: $padding-sm;
+  width: 100%;
+  font-size: 18px;
+}
+
+.todo-check {
+  float: right;
+}

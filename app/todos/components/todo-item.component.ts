@@ -1,3 +1,5 @@
+import './todo-item.component.scss';
+
 import { ITodo } from '../models';
 import { TodoActions } from '../todo.actions';
 import { INgRedux } from 'ng-redux';

@@ -1,6 +1,10 @@
+<div class="todos" ng-if="$ctrl.todos">
+  <div class="todos-header">
+    <h2>Todos</h2>
+  </div>
+  <div class="todos-list">
+    <todo-item ng-repeat="todo in $ctrl.todos" todo="todo">
+    </todo-item>
+  </div>
 
-<div class="todo-list" ng-if="$ctrl.todos">
-  <todo-item ng-repeat="todo in $ctrl.todos"
-             todo="todo">
-  </todo-item>
 </div>
