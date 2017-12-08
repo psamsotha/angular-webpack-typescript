@@ -1,6 +1,7 @@
 import { AnyAction } from 'redux';
 import { Map, List } from 'immutable';
 import { TodoActions } from '../todo.actions';
+import { todoReducer } from './todo.reducer';
 import { createTodo, ITodoData } from '../models';
 
 
@@ -52,6 +53,11 @@ export function todoListReducer(state: TodoListState = initialState,
     case TodoActions.FETCH_TODOS_FAILURE:
       const { error } = action.payload
       return state.set('isFetching', false);
+
+    case TodoActions.TODO_COMPLETE:
+      const todoId = action.payload.todoId;
+      const todo = state.get(todoId);
+      return state.set(todoId, todoReducer(todo, action));
       
     default:
       return state;

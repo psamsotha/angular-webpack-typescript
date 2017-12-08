@@ -1,4 +1,6 @@
-import { AppState } from '../../core/interfaces';
+import './todo-list.component.scss';
+
+import { AppState } from '../../app.state';
 import { TodoService } from '../todo.service';
 import { TodoActions } from '../todo.actions';
 import { ITodoData } from '../models';
@@ -20,7 +22,6 @@ export class TodoListController implements ng.IComponentController {
   $onInit() {
     this.$ngRedux.dispatch(this.todoActions.fetchTodos());
     this.todoService.getTodos().then((todos: ITodoData[]) => {
-      // simulate some latency to see loading indicator
       this.$ngRedux.dispatch(this.todoActions.fetchTodosSuccess(todos));
     });
   }

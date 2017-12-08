@@ -1,0 +1,6 @@
+<div class="todo clearfix">
+  <span class="todo-title">
+    {{$ctrl.todo.title}}
+  </span>
+  <checkbox checked="$ctrl.todo.complete" on-change="$ctrl.checkChanged($event)"></checkbox>
+</div>

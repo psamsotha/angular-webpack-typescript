@@ -6,6 +6,8 @@ export class TodoActions {
   static readonly FETCH_TODOS = 'FETCH_TODOS';
   static readonly FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
   static readonly FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE';
+
+  static readonly TODO_COMPLETE = 'TODO_COMPLETE';
   
 
   fetchTodos(): AnyAction {
@@ -30,5 +32,15 @@ export class TodoActions {
         error
       }
     }
+  }
+
+  todoComplete(todoId: number, complete: boolean): AnyAction {
+    return {
+      type: TodoActions.TODO_COMPLETE,
+      payload: {
+        todoId,
+        complete
+      }
+    };
   }
 }
