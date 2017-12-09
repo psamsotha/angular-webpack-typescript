@@ -13,8 +13,7 @@ export const initialState: TodosUiState = Map<string, any>({
 export function todosUiReducer(state: TodosUiState = initialState, action: AnyAction) {
   switch(action.type) {
     case TodoActions.SHOW_COMPLETED:
-      const showCompleted = action.payload.showCompleted;
-      return state.set('showCompleted', showCompleted);
+      return state.set('showCompleted', action.payload.showCompleted);
 
     default:
       return state;

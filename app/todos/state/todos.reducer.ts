@@ -34,14 +34,15 @@ export function todoListReducer(state: TodoListState = initialState,
       return state.withMutations(todos => {
 
         const todosData = action.payload.todos;
-        const todoIds = todos.get('todoIds');
 
         todosData.forEach((todo) => {
           todos.set(todo.id, createTodo(todo));
         });
 
+        const todoIds = mergeTodoIds(todos.get('todoIds'), todosData);
+        todos.set('todoIds', mergeTodoIds(todoIds, todosData)); 
+        
         todos.set('isFetching', false);
-        todos.set('todoIds', mergeTodoIds(todoIds, todosData));    
       });
 
     /**
