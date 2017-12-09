@@ -5,8 +5,9 @@ import { TodoActions } from './todo.actions';
 export class TodoService {
   static $inject = ['$http', '$ngRedux'];
 
-  constructor(private $http: ng.IHttpService,
-    private $ngRedux: ngRedux.INgRedux) { }
+  constructor(
+    private $http: ng.IHttpService
+  ) { }
 
   /**
    * Get list of todos.

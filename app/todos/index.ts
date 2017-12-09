@@ -1,3 +1,4 @@
+import 'ng-redux';
 import * as angular from 'angular';
 import { TodoListComponent } from './components';
 import { TodoItemComponent } from './components';
@@ -17,7 +18,8 @@ export { TodosUiState, todosUiReducer } from './state'
 
 export const TodosModule: string = angular
   .module('todos', [
-    SharedModule
+    SharedModule,
+    'ngRedux'
   ])
   .component('todoList', TodoListComponent)
   .component('todoItem', TodoItemComponent)
