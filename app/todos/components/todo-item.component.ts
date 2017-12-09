@@ -9,7 +9,7 @@ export interface CompleteChangeEvent {
   complete: boolean;
 }
 
-class TodoItemController implements ng.IComponentController {
+export class TodoItemController implements ng.IComponentController {
 
   private todo: ITodo;
   private onCompleteChange: Function;

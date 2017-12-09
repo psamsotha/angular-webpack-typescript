@@ -7,6 +7,23 @@ export interface CheckChangeEvent {
 
 let boxId = 1;
 
+export class CheckboxController implements ng.IComponentController {
+
+  private id: number;
+
+  /* bindings */
+  private checked: boolean;
+  private onChange: Function;
+
+  constructor() {
+    this.id = boxId++;
+  }
+
+  onCheckChange() {
+    this.onChange({ $event: { value: this.checked } });
+  }
+}
+
 export const Checkbox: ng.IComponentOptions = {
   bindings: {
     checked: '<',
@@ -23,11 +40,5 @@ export const Checkbox: ng.IComponentOptions = {
     `;
     return html;
   },
-  controller: function () {
-    this.id = boxId++;
-
-    this.onCheckChange = function () {
-      this.onChange({ $event: { value: this.checked } });
-    }
-  }
+  controller: CheckboxController
 }

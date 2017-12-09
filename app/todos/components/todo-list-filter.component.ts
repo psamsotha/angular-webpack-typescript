@@ -5,8 +5,7 @@ export interface ShowCompleteChangeEvent {
   showCompleted: boolean;
 }
 
-
-class TodoListFilterController implements ng.IComponentController {
+export class TodoListFilterController implements ng.IComponentController {
 
   private showCompleted: boolean;
   private onShowCompleteChange: Function;

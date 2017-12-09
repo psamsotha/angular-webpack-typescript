@@ -13,7 +13,10 @@ export class TodoListController implements ng.IComponentController {
   static $inject = ['TodoService', 'TodoActions', '$ngRedux'];
 
   private unsubscribe: any;
+
+  /* $ngRedux bindings */
   private showCompleted: boolean;
+
 
   constructor(
     private todoService: TodoService,
@@ -24,6 +27,7 @@ export class TodoListController implements ng.IComponentController {
 
       this.showCompletedFilter = this.showCompletedFilter.bind(this)
   }
+
 
   $onInit() {
     this.$ngRedux.dispatch(this.todoActions.fetchTodos());
