@@ -3,8 +3,14 @@
     <h2>Todos</h2>
   </div>
   <div class="todos-list">
-    <todo-item ng-repeat="todo in $ctrl.todos" todo="todo">
+    <todo-item 
+        ng-repeat="todo in $ctrl.todos | filter:$ctrl.showCompletedFilter"
+        todo="todo"
+        on-complete-change="$ctrl.handleCompleteChange($event)">
     </todo-item>
   </div>
-
+  <todo-list-filter
+      show-completed="$ctrl.showCompleted"
+      on-show-complete-change="$ctrl.handleShowCompleteChange($event)">
+  </todo-list-filter>
 </div>

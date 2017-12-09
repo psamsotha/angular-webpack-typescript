@@ -4,12 +4,16 @@ import { AppState } from '../../app.state';
 import { TodoService } from '../todo.service';
 import { TodoActions } from '../todo.actions';
 import { ITodoData } from '../models';
+import { CompleteChangeEvent } from './todo-item.component';
+import { ShowCompleteChangeEvent } from './todo-list-filter.component';
+import { getIsFetching, getShowCompleted, getTodosToJs } from '../state/selectors';
 
 
 export class TodoListController implements ng.IComponentController {
   static $inject = ['TodoService', 'TodoActions', '$ngRedux'];
 
   private unsubscribe: any;
+  private showCompleted: boolean;
 
   constructor(
     private todoService: TodoService,
@@ -17,6 +21,8 @@ export class TodoListController implements ng.IComponentController {
     private $ngRedux: ngRedux.INgRedux,
   ) {
       this.unsubscribe = $ngRedux.connect(this.mapStateToThis)(this);
+
+      this.showCompletedFilter = this.showCompletedFilter.bind(this)
   }
 
   $onInit() {
@@ -30,18 +36,25 @@ export class TodoListController implements ng.IComponentController {
     this.unsubscribe();
   }
 
+  handleCompleteChange(event: CompleteChangeEvent) {
+    const { todoId, complete } = event;
+    this.$ngRedux.dispatch(this.todoActions.todoComplete(todoId, complete))
+  }
+
+  handleShowCompleteChange(event: ShowCompleteChangeEvent) {
+    const { showCompleted } = event;
+    this.$ngRedux.dispatch(this.todoActions.showCompleted(showCompleted));
+  }
+
+  showCompletedFilter(todo) {
+    return this.showCompleted || !todo.complete;   
+  }
+
   mapStateToThis(state: AppState) {
-    const { todoList } = state;
-    const isFetching = todoList.get('isFetching');
-    const todoIds = todoList.get('todoIds');
-
-    const todos = todoIds.map((todoId) => {
-      return todoList.get(todoId);
-    });
-
     return {
-      todos: todos.toJS(),
-      isFetching
+      todos: getTodosToJs(state),
+      isFetching: getIsFetching(state),
+      showCompleted: getShowCompleted(state)
     };
   }
 }

@@ -1,6 +1,9 @@
-import { TodoListState } from './todos/state/todos.reducer';
+import { TodoListState } from './todos';
+import { TodosUiState } from './todos';
 
 
 export interface AppState {
-  todoList: TodoListState
+  todoList: TodoListState,
+
+  uiTodos: TodosUiState
 }

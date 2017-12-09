@@ -1,34 +1,39 @@
 import './todo-item.component.scss';
 
 import { ITodo } from '../models';
-import { TodoActions } from '../todo.actions';
-import { INgRedux } from 'ng-redux';
 import { CheckChangeEvent } from '../../shared/components/checkbox';
 
 
+export interface CompleteChangeEvent {
+  todoId: number,
+  complete: boolean;
+}
+
 class TodoItemController implements ng.IComponentController {
-  static $inject = ['TodoActions', '$ngRedux'];
 
   private todo: ITodo;
+  private onCompleteChange: Function;
 
-  constructor(
-    private todoActions: TodoActions,
-    private $ngRedux: INgRedux
-  ) {}
   
   checkChanged(event: CheckChangeEvent) {
     const todoId = this.todo.id;
     const complete = event.value;
-    console.log(`complete(${this.todo.id}): ${complete}`)
-    this.$ngRedux.dispatch(this.todoActions.todoComplete(todoId, complete))
+
+    this.onCompleteChange({
+      $event:{
+        todoId,
+        complete
+      } as CompleteChangeEvent
+    })
   }
 }
 
 
 export const TodoItemComponent: ng.IComponentOptions = {
   bindings: {
-    todo: '<'
+    todo: '<',
+    onCompleteChange: '&'
   },
   templateUrl: 'todos/components/todo-item.component.html',
   controller: TodoItemController
-}
+};

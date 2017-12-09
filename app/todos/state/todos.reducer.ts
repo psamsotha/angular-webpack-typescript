@@ -1,5 +1,5 @@
+import { Map, List, Record } from 'immutable';
 import { AnyAction } from 'redux';
-import { Map, List } from 'immutable';
 import { TodoActions } from '../todo.actions';
 import { todoReducer } from './todo.reducer';
 import { createTodo, ITodoData } from '../models';

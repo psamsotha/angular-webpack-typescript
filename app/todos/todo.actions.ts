@@ -8,6 +8,7 @@ export class TodoActions {
   static readonly FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE';
 
   static readonly TODO_COMPLETE = 'TODO_COMPLETE';
+  static readonly SHOW_COMPLETED = 'SHOW_COMPLETED';
   
 
   fetchTodos(): AnyAction {
@@ -40,6 +41,15 @@ export class TodoActions {
       payload: {
         todoId,
         complete
+      }
+    };
+  }
+
+  showCompleted(showCompleted: boolean): AnyAction {
+    return {
+      type: TodoActions.SHOW_COMPLETED,
+      payload: {
+        showCompleted
       }
     };
   }

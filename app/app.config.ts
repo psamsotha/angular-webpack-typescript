@@ -1,7 +1,7 @@
 import * as ngRedux from 'ng-redux';
 import { combineReducers } from 'redux';
 
-import { todoListReducer } from './todos/state';
+import { todoListReducer, todosUiReducer } from './todos';
 
 
 export const appConfig = [
@@ -33,7 +33,9 @@ export const appConfig = [
     let reducer = null;
     try {
       reducer = combineReducers({
-        todoList: todoListReducer
+        todoList: todoListReducer,
+        
+        uiTodos: todosUiReducer,
       })
     } catch (error) {
       console.error('erro creating combine reducer')

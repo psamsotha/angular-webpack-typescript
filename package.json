@@ -14,7 +14,8 @@
     "angular-material": "^1.1.5",
     "angular-messages": "^1.6.6",
     "immutable": "^3.8.2",
-    "ng-redux": "^3.5.2"
+    "ng-redux": "^3.5.2",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@types/angular": "^1.6.32",
