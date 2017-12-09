@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "outDir": "./build",
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "node",
+      "protractor"
+    ]
+  },
+  "exclude": [
+    "../node_modules"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ]
+}

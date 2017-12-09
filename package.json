@@ -44,6 +44,7 @@
     "phantomjs-prebuilt": "^2.1.15",
     "postcss-loader": "^2.0.6",
     "precss": "^2.0.0",
+    "protractor": "^5.2.1",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
@@ -58,7 +59,10 @@
     "start": "npm install && npm run-script dev",
     "dev": "node node_modules/.bin/webpack-dev-server --env.dev --content-base app --host 0.0.0.0 --no-inline",
     "build": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp app/index.html dist/index.html",
-    "dist": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp app/index.html dist/index.html && node node_modules/.bin/webpack-dev-server --env.prod -p --compress --content-base dist --host 0.0.0.0 --no-inline"
+    "dist": "npm test && rm -rf dist/ && node node_modules/.bin/webpack --env.prod -p && cp app/index.html dist/index.html && node node_modules/.bin/webpack-dev-server --env.prod -p --compress --content-base dist --host 0.0.0.0 --no-inline",
+    "update-webdriver": "webdriver-manager update",
+    "protractor": "rm -rf ./e2e/build && npm run tsc:e2e && protractor e2e/protractor.conf.js",
+    "tsc:e2e": "tsc --project ./e2e"
   },
   "author": "deonclem",
   "license": "ISC"
